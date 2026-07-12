@@ -1,17 +1,6 @@
 {% load static %}
 
 <header id="header" class="header">
-
-  <div class="header-content">
-
-    <!-- Logo -->
-    <a href="{% url 'aboutPage' %}" class="link-pic-logo" aria-label="درباره ما">
-      <img
-        class="pic-logo"
-        src="{% static 'webP/logo/logo.png' %}"
-        alt="لوگوی سایت">
-    </a>
-
     <!-- Menu Button -->
     <button
       class="menu-btn"
@@ -45,6 +34,17 @@
       </svg>
 
     </button>
+  <div class="header-content">
+
+    <!-- Logo -->
+    <a href="{% url 'aboutPage' %}" class="link-pic-logo" aria-label="درباره ما">
+      <img
+        class="pic-logo"
+        src="{% static 'webP/logo/logo.png' %}"
+        alt="لوگوی سایت">
+    </a>
+
+
 
     <!-- Brand -->
     <div class="header-bottom-text">
