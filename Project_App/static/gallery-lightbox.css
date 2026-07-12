@@ -1,0 +1,190 @@
+/* ===============================
+        Gallery Lightbox
+================================= */
+
+.gallery-lightbox{
+
+    position:fixed;
+    inset:0;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:40px;
+
+    background:
+        radial-gradient(circle at center,
+            rgba(35,45,60,.15),
+            rgba(5,8,12,.94));
+
+    backdrop-filter:blur(22px) saturate(120%);
+    -webkit-backdrop-filter:blur(22px) saturate(120%);
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:
+        opacity .45s ease,
+        visibility .45s ease;
+
+    z-index:99999;
+}
+
+.gallery-lightbox.active{
+
+    opacity:1;
+    visibility:visible;
+
+}
+
+/* ===============================
+            Image
+================================= */
+
+.gallery-lightbox img{
+
+    width:auto;
+    height:auto;
+
+    max-width:min(92vw,1800px);
+    max-height:90vh;
+
+    object-fit:contain;
+
+    border-radius:18px;
+
+    user-select:none;
+    -webkit-user-drag:none;
+
+    box-shadow:
+
+        0 45px 90px rgba(0,0,0,.55),
+
+        0 8px 30px rgba(255,255,255,.05);
+
+    transform:
+
+        scale(.88)
+        translateY(20px);
+
+    opacity:0;
+
+    transition:
+
+        transform .45s cubic-bezier(.22,1,.36,1),
+
+        opacity .45s ease;
+
+}
+
+.gallery-lightbox.active img{
+    transform:
+
+        scale(1)
+        translateY(0);
+    opacity:1;
+}
+
+/* ===============================
+            Close
+================================= */
+
+.gallery-close{
+
+    position:absolute;
+
+    top:26px;
+    right:26px;
+
+    width:58px;
+    height:58px;
+
+    border:none;
+    outline:none;
+
+    border-radius:50%;
+
+    color:white;
+
+    font-size:34px;
+
+    cursor:pointer;
+
+    background:
+
+        rgba(255,255,255,.08);
+
+    backdrop-filter:blur(18px);
+
+    transition:
+
+        .3s cubic-bezier(.22,1,.36,1);
+
+    box-shadow:
+
+        0 15px 40px rgba(0,0,0,.25);
+
+}
+
+.gallery-close:hover{
+
+    transform:
+
+        rotate(90deg)
+        scale(1.08);
+
+    background:
+
+        rgba(255,255,255,.18);
+
+}
+
+.gallery-frame img{ cursor:zoom-in; }
+.gallery-lightbox img{ cursor:default; }
+
+/* ===============================
+        Stop Scroll
+================================= */
+
+body.lightbox-open{
+    overflow:hidden;
+}
+
+/* ===============================
+        Mobile
+================================= */
+
+@media(max-width:768px){
+
+.gallery-lightbox{
+
+padding:18px;
+
+}
+
+.gallery-lightbox img{
+
+max-width:95vw;
+
+max-height:82vh;
+
+border-radius:12px;
+
+}
+
+.gallery-close{
+
+top:14px;
+
+right:14px;
+
+width:48px;
+
+height:48px;
+
+font-size:28px;
+
+}
+
+}

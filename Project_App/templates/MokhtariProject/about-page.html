@@ -1,0 +1,76 @@
+{% load static%}
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="با تیم حرفه‌ای مختاری آشنا شوید - متخصصان طراحی و اجرای دکوراسیون داخلی با سال‌ها تجربه">
+  <meta name="keywords" content="درباره مختاری, تیم طراحی داخلی, متخصصان دکوراسیون, سابقه کاری, پروژه‌های موفق">
+  <meta name="author" content="Mokhtari Interior Design">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="fa">
+  <title>درباره ما</title>
+
+  <meta property="og:title" content="درباره مختاری - تیم متخصص طراحی و دکوراسیون داخلی">
+  <meta property="og:description" content="آشنایی با تیم حرفه‌ای و باتجربه مختاری در زمینه طراحی و اجرای دکوراسیون داخلی">
+  <meta property="og:image" content="{% static 'webP/logo/logo.webp' %}">
+  <meta property="og:url" content="https://MokhtariProject.com/about">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+  <link rel="icon" type="image/png" href="{% static 'webP/logo/logo+back.png' %}">
+  <link rel="stylesheet" href="{% static 'gallery.css' %}">
+  <link rel="stylesheet" href="{% static 'galleryHoriz.css'%}">
+  <link rel="stylesheet" href="{% static 'contact-about.css' %}">
+  <link rel="stylesheet" href="{% static 'header.css' %}">
+
+  <style>
+    html, body {
+      overflow-x: hidden !important;
+    }
+  </style>
+
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  <main>
+    <section class="gallery-section container-fluid">
+      <div class="blur-ball one"></div>
+      <div class="blur-ball two"></div>
+      <div class="contact-hero">
+        <div class="hero-grid-pattern"></div>
+        <div class="hero-noise"></div>
+        <div class="hero-glow hero-glow-1"></div>
+        <div class="hero-glow hero-glow-2"></div>
+        <div class="text">
+            <span class="hero-tag">
+                About our team
+            </span>
+            <div class="hero-number">04</div>
+            <h1 class="hero-title">
+                درباره ما
+            </h1>
+            <p class="hero-description">
+              ما در تیم خود متعهد به ارائه بهترین کیفیت و تجربه برای مشتریان هستیم. 
+              پروژه‌های ما ترکیبی از نوآوری، دقت و خلاقیت هستند تا فضایی منحصر به فرد برای کاربران ایجاد کنند.
+            </p>
+        </div>
+        <div class="hero-scroll">
+            <span></span>
+        </div>
+
+        {% comment %}
+        <div class="hero-icon">
+          <img src="{% static 'webP/logo/logo_11zon.webp' %}" alt="لوگو">
+        </div>
+        {% endcomment %}
+      </div>
+    </section>
+  </main>
+
+  <script src="{% static 'script/script.js' %}" defer></script>
+  <script src="{% static 'script/header.js' %}"></script>
+  <script> const headerUrl = "{% url 'header' %}"; </script>
+</body>
+</html>
