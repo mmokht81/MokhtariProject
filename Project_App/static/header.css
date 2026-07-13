@@ -334,7 +334,6 @@ textarea{
     display:flex;
     justify-content:center;
     align-items:center;
-    transform:translateX(300px);
 }
 
 .menu-logo img{
@@ -445,6 +444,7 @@ textarea{
 }
 
 @media (max-width:992px){
+
     .header{
         top:18px;
         left:18px;
@@ -452,51 +452,82 @@ textarea{
         height:72px;
         padding:0;
         border-radius:50%;
-        justify-content:center;
     }
-    .header-content{
-        justify-content:center;
-    }
-    .link-pic-logo,
-    .header-bottom-text{
-        display:none;
-    }
-    .menu-btn{
-        margin:0;
-        width:72px;
-        height:72px;
-    }
+
     .header.expanded{
         width:calc(100vw - 36px);
         height:calc(100vh - 36px);
         border-radius:34px;
     }
-    .menu{
-        padding:50px 30px;
-        flex-direction:column;
+
+    .header-content{
+        display:flex;
         justify-content:center;
-        gap:60px;
+        align-items:center;
+        z-index:20;
     }
+
+    .link-pic-logo,
+    .header-bottom-text{
+        display:none;
+    }
+
+    .menu-btn{
+        position:absolute;
+        top:36px;
+        left:36px;
+        transform:none;
+        width:72px;
+        height:72px;
+        z-index:1000;
+    }
+
+    .menu{
+        z-index:10;
+        padding:40px 25px;
+    }
+
     .menu-content{
         display:flex;
         flex-direction:column;
         align-items:center;
-    }
-    .menu-logo{
-        width:180px;
-        margin-top:35px;
         justify-content:center;
-        transform:none;
-        align-items:center;
+        height:100%;
+        gap:35px;
     }
+
+    .menu-list{
+        order:1;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        gap:22px;
+    }
+
     .menu-item{
         text-align:center;
     }
+
     .menu-item a{
         font-size:26px;
     }
-}
 
+    .menu-logo{
+        order:2;
+        width:170px;
+        transform:none;
+        margin-top:10px;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+    }
+
+    .menu-logo img{
+        width:100%;
+        max-width:170px;
+    }
+
+}
 
 @media (max-width:576px){
     .menu{
