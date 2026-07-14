@@ -22,7 +22,7 @@ A Django-based website developed for showcasing architectural projects.
 ## Installation
 
 ```bash
-git clone https://github.com/mmokht81/MokhtariProject.git
+git clone https://github.com/MahdieMokhtari/MokhtariProject
 cd MokhtariProject
 pip install -r requirements.txt
 python manage.py runserver
