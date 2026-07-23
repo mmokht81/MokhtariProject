@@ -25,21 +25,29 @@ document.addEventListener("DOMContentLoaded", () => {
       let menuOpen = false;
 
       // Hover Effect
-
       menuBtn.addEventListener("mousemove", (e) => {
         if (menuOpen) return;
 
         const rect = menuBtn.getBoundingClientRect();
-
         const moveX = (e.clientX - rect.left - rect.width / 2) / 4;
         const moveY = (e.clientY - rect.top - rect.height / 2) / 4;
 
-        menuBtn.style.transform = `translate(calc(-50% + ${moveX}px), calc(-50% + ${moveY}px)) scale(1.05)`;
+        // فقط در صورتی که هدر expanded نشده باشد افکت وسط‌چین اعمال شود
+        if (!header.classList.contains("expanded")) {
+          menuBtn.style.transform = `translate(calc(-50% + ${moveX}px), calc(-50% + ${moveY}px)) scale(1.05)`;
+        } else {
+          menuBtn.style.transform = `translate(0, -50%) translate(${moveX}px, ${moveY}px) scale(1.05)`;
+        }
       });
 
       menuBtn.addEventListener("mouseleave", () => {
         if (menuOpen) return;
-        menuBtn.style.transform = 'translate(-50%,-50%) scale(1)';
+        
+        if (!header.classList.contains("expanded")) {
+          menuBtn.style.transform = 'translate(-50%,-50%) scale(1)';
+        } else {
+          menuBtn.style.transform = 'translate(0, -50%) scale(1)';
+        }
       });
 
       // Open Menu
