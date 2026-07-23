@@ -18,15 +18,22 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-body {
+/* body {
   font-family: "Shabnam", sans-serif;
   -webkit-font-smoothing: antialiased;
+} */
+ /* این بخش را جایگزین بخش فونت قبلی کنید */
+body {
+  font-family: sans-serif; /* تغییر موقت برای تست */
+  -webkit-font-smoothing: antialiased;
+  background-color: #f0f0f0; /* یک رنگ پس‌زمینه اضافه کنیم که ببینیم بادی لود شده یا نه */
 }
 
 button, input, textarea, a { font-family: inherit; }
 
 ::selection { background: rgba(0, 53, 89, .18); }
 
+/* --- ساختار اصلی هدر --- */
 .header {
   position: fixed;
   top: var(--header-gap);
@@ -44,9 +51,10 @@ button, input, textarea, a { font-family: inherit; }
   transition: var(--transition);
   display: flex;
   flex-direction: column;
-  overflow: visible; 
+  overflow: visible; /* برای جلوگیری از بریده شدن سایه‌ها و دکمه‌ها */
 }
 
+/* افکت‌های نوری پس‌زمینه (بدون تداخل با کلیک) */
 .header::before {
   content: "";
   position: absolute;
@@ -112,6 +120,7 @@ button, input, textarea, a { font-family: inherit; }
   margin-bottom: 60%;
   opacity: .92;
 }
+
 .logo-text {
   position: absolute;
   left: 50%;
@@ -122,15 +131,19 @@ button, input, textarea, a { font-family: inherit; }
   filter: drop-shadow(0 2px 6px rgba(255,255,255,.08)) drop-shadow(0 5px 12px rgba(0,0,0,.16));
   transition: transform .35s ease, filter .35s ease;
 }
+
 .header:hover .logo-text {
   transform: translate(-50%, -2px);
 }
 
+/* --- دکمه منو (کاملاً فیکس در مرکز در اولین لود) --- */
 .menu-btn {
   position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  width: 62px; height: 62px;
+  top: 50%; 
+  left: 50%;
+  transform: translate(-50%, -50%); /* تراز دقیق هندسی دایره وسط */
+  width: 62px; 
+  height: 62px;
   border: none;
   border-radius: 50%;
   background: var(--brand);
@@ -140,12 +153,20 @@ button, input, textarea, a { font-family: inherit; }
   justify-content: center;
   z-index: 1010;
   box-shadow: 0 12px 30px rgba(0, 53, 89, .25);
-  transition: transform .35s ease, box-shadow .35s ease, background .35s ease;
+  /* انیمیشن رفتن به چپ به همراه ترنسفورم هاور */
+  transition: transform .35s ease, box-shadow .35s ease, background .35s ease, left .45s cubic-bezier(.2, .9, .2, 1);
   pointer-events: auto !important;
 }
 
-.menu-btn:hover { transform: translate(-50%, -50%) scale(1.08); box-shadow: 0 18px 40px rgba(0, 53, 89, .35); }
-.menu-btn:focus-visible { outline: 2px solid rgba(0, 53, 89, .4); outline-offset: 6px; }
+.menu-btn:hover { 
+  transform: translate(-50%, -50%) scale(1.08); 
+  box-shadow: 0 18px 40px rgba(0, 53, 89, .35); 
+}
+
+.menu-btn:focus-visible { 
+  outline: 2px solid rgba(0, 53, 89, .4); 
+  outline-offset: 6px; 
+}
 
 .menu-btn svg rect { fill: #fff; }
 .menu-btn .line rect {
@@ -157,16 +178,23 @@ button, input, textarea, a { font-family: inherit; }
 .menu-btn.open .line-2 rect { opacity: 0; transform: scaleX(.2); }
 .menu-btn.open .line-3 rect { transform: translateY(-7px) rotate(-45deg); width: 20px; }
 
+/* --- حالت هدر باز شده (Expanded) --- */
 .header.expanded {
   width: calc(100vw - (var(--header-gap) * 2));
   transition: width .75s cubic-bezier(.23, 1, .32, 1), transform .35s ease;
 }
 
+/* انتقال دکمه به سمت چپ با حفظ مرکزیت عمودی و تراز افقی درست */
 .header.expanded .menu-btn {
   left: 69px;
-  transform: translateY(-50%); 
+  transform: translate(-50%, -50%);
 }
 
+.header.expanded .menu-btn:hover {
+  transform: translate(-50%, -50%) scale(1.08);
+}
+
+/* --- اورلی و منو --- */
 #overlay {
   position: fixed;
   inset: 0;
@@ -199,13 +227,13 @@ button, input, textarea, a { font-family: inherit; }
   border-radius: inherit;
 }
 
-
 .menu::-webkit-scrollbar { display: none; }
+
 .menu.open {
   opacity: 1;
   visibility: visible;
   transform: scale(1);
-  pointer-events: auto !important;
+  pointer-events: auto !important; /* آزاد شدن کلیک روی منو */
 }
 
 .menu-content {
@@ -247,7 +275,7 @@ button, input, textarea, a { font-family: inherit; }
   font-weight: 700;
   position: relative;
   transition: color .3s ease, transform .3s ease;
-  pointer-events: auto !important;
+  pointer-events: auto !important; /* فعال بودن قطعی کلیک روی لینک‌ها */
 }
 
 .menu-item a::after {
@@ -272,6 +300,7 @@ button, input, textarea, a { font-family: inherit; }
 }
 .menu-logo img:hover { transform: scale(1.1); }
 
+/* --- ریسپانسیو و مدیا کوئری‌ها --- */
 @media (max-width: 1200px) {
   .header.expanded { width: calc(100vw - 32px); }
   .menu { padding: 0 45px; }
@@ -279,7 +308,7 @@ button, input, textarea, a { font-family: inherit; }
 }
 
 @media (max-width: 992px) {
-  .header {
+   .header {
     top: 18px; left: 18px;
     width: 72px; height: 72px;
     padding: 0; border-radius: 50%;
@@ -290,13 +319,34 @@ button, input, textarea, a { font-family: inherit; }
     border-radius: 34px;
   }
   .link-pic-logo, .header-bottom-text { display: none; }
-  .menu-btn { top: 36px; left: 36px; transform: none; }
-  .menu-btn:hover { transform: scale(1.06); }
+  
+  /* تراز وسط هندسی دایره در حالت بسته بودن منو در موبایل */
+  .menu-btn { 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%) !important; 
+  }
+  .menu-btn:hover { 
+    transform: translate(-50%, -50%) scale(1.06) !important; 
+  }
+
+  /* رفع مشکل اصلی: تراز دکمه هنگام باز شدن منو در موبایل */
+  .header.expanded .menu-btn {
+    top: 36px !important; 
+    left: 36px !important;
+    /* به جای حذف ترنسفورم، تراز وسط را روی نقطه 36px فیکس نگه می‌داریم */
+    transform: translate(-50%, -50%) !important; 
+  }
+  .header.expanded .menu-btn:hover {
+    transform: translate(-50%, -50%) scale(1.06) !important; 
+  }
+  
   .menu-content { flex-direction: column; justify-content: center; gap: 35px; }
   .menu-list { order: 1; align-items: center; }
   .menu-item a { font-size: 26px; }
   .menu-logo { order: 2; width: 170px; margin-top: 10px; }
 }
+
 
 @media (max-width: 576px) {
   .menu { padding: 30px 20px; }
@@ -304,6 +354,7 @@ button, input, textarea, a { font-family: inherit; }
   .menu-logo { width: 140px; }
 }
 
+/* انیمیشن‌ها */
 @keyframes glassLight {
   from { left: -120%; }
   to { left: 180%; }

@@ -27,12 +27,12 @@ document.addEventListener("DOMContentLoaded", () => {
       // Hover Effect
       menuBtn.addEventListener("mousemove", (e) => {
         if (menuOpen) return;
+        if (window.innerWidth <= 992) return;
 
         const rect = menuBtn.getBoundingClientRect();
         const moveX = (e.clientX - rect.left - rect.width / 2) / 4;
         const moveY = (e.clientY - rect.top - rect.height / 2) / 4;
 
-        // فقط در صورتی که هدر expanded نشده باشد افکت وسط‌چین اعمال شود
         if (!header.classList.contains("expanded")) {
           menuBtn.style.transform = `translate(calc(-50% + ${moveX}px), calc(-50% + ${moveY}px)) scale(1.05)`;
         } else {
@@ -42,6 +42,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
       menuBtn.addEventListener("mouseleave", () => {
         if (menuOpen) return;
+        if (window.innerWidth <= 992) {
+          menuBtn.style.transform = "";
+          return;
+        }
         
         if (!header.classList.contains("expanded")) {
           menuBtn.style.transform = 'translate(-50%,-50%) scale(1)';
@@ -51,7 +55,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       // Open Menu
-
       function openMenu() {
         menuOpen = true;
 
@@ -67,7 +70,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       // Close Menu
-
       function closeMenu() {
         menuOpen = false;
 
@@ -83,7 +85,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       // Toggle
-
       function toggleMenu() {
         menuOpen ? closeMenu() : openMenu();
       }

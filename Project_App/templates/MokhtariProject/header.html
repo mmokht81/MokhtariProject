@@ -1,7 +1,6 @@
 {% load static %}
 
 <header id="header" class="header">
-    <!-- Menu Button -->
     <button
       class="menu-btn"
       id="menuBtn"
@@ -10,10 +9,7 @@
       aria-controls="sideMenu"
       title="منو">
 
-      <svg width="40"
-           height="30"
-           viewBox="0 0 40 30"
-           xmlns="http://www.w3.org/2000/svg">
+      <svg width="40" height="30" viewBox="0 0 40 30" xmlns="http://www.w3.org/2000/svg">
 
         <g id="burgerLines">
 
@@ -30,28 +26,16 @@
           </g>
 
         </g>
-
       </svg>
-
     </button>
   <div class="header-content">
 
-    <!-- Logo -->
     <a href="{% url 'aboutPage' %}" class="link-pic-logo" aria-label="درباره ما">
-      <img
-        class="pic-logo"
-        src="{% static 'webP/logo/logo.png' %}"
-        alt="لوگوی سایت">
+      <img class="pic-logo" src="{% static 'webP/logo/logo.png' %}" alt="لوگوی سایت">
     </a>
 
-
-
-    <!-- Brand -->
     <div class="header-bottom-text">
-      <img
-        class="logo-text"
-        src="{% static 'webP/logo/name.png' %}"
-        alt="مختاری">
+      <img class="logo-text" src="{% static 'webP/logo/name.png' %}" alt="مختاری">
     </div>
 
   </div>
@@ -60,48 +44,27 @@
 
     <div class="menu-content">
 
-      <!-- Links -->
       <ul class="menu-list">
 
         <li class="menu-item">
-          <a href="{% url 'homePage' %}">
-            صفحه اصلی
-          </a>
+          <a href="{% url 'homePage' %}">صفحه اصلی</a>
         </li>
-
         <li class="menu-item">
-          <a href="{% url 'projectsPage' %}">
-            پروژه ها
-          </a>
+          <a href="{% url 'projectsPage' %}">پروژه ها</a>
         </li>
-
         <li class="menu-item">
-          <a href="{% url 'aboutPage' %}">
-            درباره ما
-          </a>
+          <a href="{% url 'aboutPage' %}">درباره ما</a>
         </li>
-
         <li class="menu-item">
-          <a href="{% url 'contactPage' %}">
-            ارتباط با ما
-          </a>
+          <a href="{% url 'contactPage' %}">ارتباط با ما</a>
         </li>
-
       </ul>
 
-      <!-- Big Logo -->
       <div class="menu-logo">
-
-        <img
-          src="{% static 'webP/logo/logo.png' %}"
-          alt="لوگوی مختاری">
-
+        <img src="{% static 'webP/logo/logo.png' %}" alt="لوگوی مختاری">
       </div>
-
     </div>
-
   </nav>
-
 </header>
 
 <div id="overlay"></div>
