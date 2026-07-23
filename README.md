@@ -1,4 +1,4 @@
-# Mokhtari Architecture Website
+# Mokhtari Mokhtari Website
 
 A Django-based website developed for showcasing architectural projects.
 
